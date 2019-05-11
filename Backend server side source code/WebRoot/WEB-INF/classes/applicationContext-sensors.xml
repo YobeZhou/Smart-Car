@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		"> 
+	<!-- Action -->
+	<bean id="sensorsAction" class="limit.beyond.explore.auth.sensors.web.SensorsAction" scope="prototype">
+		<property name="sensorsEbi" ref="sensorsEbi"/>
+		<!-- <property name="depEbi" ref="depEbi"/> -->
+	</bean>
+	<!-- Ebi -->
+	<bean id="sensorsEbi" class="limit.beyond.explore.auth.sensors.business.ebo.SensorsEbo">
+		<property name="sensorsDao" ref="sensorsDao"/>
+	</bean>
+	<!-- Dao -->
+	<bean id="sensorsDao" class="limit.beyond.explore.auth.sensors.dao.impl.SensorsImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+</beans>

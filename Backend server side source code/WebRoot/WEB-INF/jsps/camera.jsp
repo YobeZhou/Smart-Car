@@ -1,0 +1,100 @@
+<html>
+ <head>
+ <title>html5调用摄像头拍照</title>
+ <style type="text/css">
+ #camera {
+ width: 640px;
+ height: 525px;
+ position: fixed;
+ border: 1px solid #f0f0f0;
+ -moz-border-radius: 4px 4px 0 0;
+ -webkit-border-radius: 4px 4px 0 0;
+ border-radius: 4px 4px 0 0;
+ -moz-box-shadow: 0 0 4px rgba(0,0,0,0.6);
+ -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.6);
+ box-shadow: 0 0 4px rgba(0,0,0,0.6);
+ }
+
+ #buttons {
+ text-align: center;
+ }
+
+ .btn {
+ width: 99px;
+ height: 38px;
+ line-height: 32px;
+ margin: 0px 4px 0px 0px;
+ border: 1px solid #fff;
+ -moz-border-radius: 5px; /* Gecko browsers */
+ -webkit-border-radius: 5px; /* Webkit browsers */
+ border-radius: 5px; /* W3C syntax */
+ cursor: default;
+ text-align: center;
+ font-size: 14px;
+ color: #fff;
+ }
+ .btn_blue {
+ background-color: #5CACEE;
+ }
+ .btn_green {
+ background-color: #00EE00;
+ }
+ .hidden{ display:none }
+ </style>
+ </head>
+ <body>
+ <div id="camera">
+ <div id="contentHolder">
+ <video id="video" width="640" height="480" autoplay></video>
+ <canvas style="display:none;" id="canvas" width="640" height="480"></canvas>
+ </div>
+ <div id="buttons">
+<!--  <button id="btn_snap" class="btn btn_blue">拍照</button> -->
+<input    type="button" value="人脸识别解锁"  class="btn btn_blue" onclick="javascrtpt:window.location.href='${pageContext.request.contextPath}/sensors_msg.action?sqe.x=0&sqe.y=0&sqe.a=38'">
+<input    type="button" value="小车上锁"  class="btn btn_blue" onclick="javascrtpt:window.location.href='${pageContext.request.contextPath}/sensors_msg.action?sqe.x=0&sqe.y=0&sqe.a=39'">
+ <button id="btn_cancel" class="btn btn_blue" style="display:none;">取消</button>
+ <button id="btn_upload" class="btn btn_green" style="display:none;">上传</button>
+ </div>
+ </div>
+ </body>
+</html>
+<script type="text/javascript">
+ // 添加事件监听器
+ window.addEventListener("DOMContentLoaded", function () {
+ // 获取元素，创建设置等等
+ var canvas = document.getElementById("canvas"),
+ context = canvas.getContext("2d"),
+ video = document.getElementById("video"),
+ videoObj = { "video": true },
+ errBack = function (error) {
+ console.log("Video capture error: ", error.code);
+ };
+
+ // 添加video 监听器
+ if (navigator.getUserMedia) { // 标准
+ navigator.getUserMedia(videoObj, function (stream) {
+ video.src = stream;
+ video.play();
+ }, errBack);
+ } else if (navigator.webkitGetUserMedia) { // WebKit 前缀
+ navigator.webkitGetUserMedia(videoObj, function (stream) {
+ video.src = window.webkitURL.createObjectURL(stream);
+ video.play();
+ }, errBack);
+ }
+ else if (navigator.mozGetUserMedia) { // Firefox 前缀
+ navigator.mozGetUserMedia(videoObj, function (stream) {
+ video.src = window.URL.createObjectURL(stream);
+ video.play();
+ }, errBack);
+ }
+ else {
+ alert("浏览器不支持HTML5！");
+ //console.log('your browser not support getUserMedia');
+ }
+
+ document.getElementById("btn_snap").addEventListener("click", function () {
+ context.drawImage(video, 0, 0, 640, 480);
+ });
+ }, false);
+</script>

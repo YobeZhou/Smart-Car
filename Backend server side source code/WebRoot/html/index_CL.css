@@ -1,0 +1,117 @@
+
+.row {
+  /*横*/
+    display: -webkit-box;
+    display: -webkit-flex; /* Safari */
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%; 
+}
+.col {/*列*/
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: block;
+  width: 100%; 
+}
+
+.col-33, .col-34 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 33.3333%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 33.3333%;
+  -ms-flex: 0 0 33.3333%;
+  flex: 0 0 33.3333%;
+  max-width: 33.3333%; 
+}
+
+.col-50 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 50%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 50%;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  max-width: 50%; 
+}
+
+
+body{min-width: 320px;overflow-x: hidden;}
+
+/*  banner */
+.focus{ width:100%; height:auto;  margin:0 auto; position:relative; overflow:hidden;   }
+.focus img{ width:100%;  height:auto; }
+.focus a{ -webkit-tap-highlight-color:rgba(0, 0, 0, 0); /* 取消链接高亮 */  }
+
+
+
+/*导航分区*/
+.nav{padding: 5px; }
+.nav .row{margin-bottom: 6px;}
+.nav .col{height: 90px; background:#ff697a;}
+.nav .col:nth-of-type(1){border-radius: 5px 0 0 5px;}
+.nav .col:nth-of-type(2){border-radius:0 5px 5px 0;}
+.nav .col:nth-of-type(2){margin: 0 1px;}
+.nav a{color:#fff; display: block; height:45px;line-height:45px; text-align: center;}
+.nav .col a:nth-of-type(2){ border-top: 1px solid #fff; box-sizing: border-box;}
+
+/* 通过:not 排除最后一个楼层  */
+.nav .row .col a:after{ 
+    content: "";
+    width: 40px;
+    height: 30px;
+    display: block;
+    margin: 0 auto;
+    background: url(../xt_ico_home_v66.png) no-repeat 0 0;  
+  /* 把宽度208px的精灵图缩小一倍 */
+    -webkit-background-size: 96px auto;
+    -moz-background-size: 96px auto;
+    -ms-background-size: 96px auto;
+    background-size: 96px auto;
+}
+
+/* 换icon */
+.nav .row:nth-of-type(1) .col:nth-of-type(2) a:after{ width: 40px; height: 30px; background-position: -40px 0;}
+.nav .row:nth-of-type(2) .col:nth-of-type(1) a:after{ width: 40px; height: 38px; background-position: 0 -73px;}
+.nav .row:nth-of-type(2) .col:nth-of-type(2) a:after{ width: 40px; height: 38px; background-position: -40px -73px;}
+.nav .row:nth-of-type(3) .col:nth-of-type(1) a:after{ width: 40px; height: 38px; background-position: -44px -119px;}
+.nav .row:nth-of-type(3) .col:nth-of-type(2) a:after{ width: 40px; height: 38px; background-position: 0px -119px;}
+.nav .row:nth-of-type(5) .col:nth-of-type(1) a:after{ width: 40px; height: 38px; background-position:  0px -33px;}
+.nav .row:nth-of-type(5) .col:nth-of-type(2) a:after{ width: 40px; height: 38px; background-position: -40px -33px;}
+
+.nav .row:nth-of-type(4) .col:nth-of-type(2) a:after{ width: 40px; height: 30px; background-position:  0px px;}
+.nav .row:nth-of-type(4) .col:nth-of-type(1) a:after{ width: 40px; height: 30px; background-position: -40px 0;}
+/* 楼层颜色 */
+.nav .row:nth-of-type(2) .col{background-color: #3d98ff;}
+.nav .row:nth-of-type(3) .col{background-color: #44c522;}
+.nav .row:nth-of-type(4) .col{background-color: #fc9720;}
+.nav .row:nth-of-type(5) .col{background-color: #f03820;}
+
+/*  footer */
+.footer{ width:100%; height:auto; margin:0 auto; position:relative; overflow:hidden;   }
+.footer .circle{ 
+  width:300px;
+  height:300px;
+  background: #ccc; 
+  margin:0 auto;  
+  -webkit-border-radius: 50%; 
+  -moz-border-radius: 50%; 
+  -ms-border-radius: 50%; 
+  border-radius: 50%; 
+}
+
+
+
+
+
+
+
+
+
+
+

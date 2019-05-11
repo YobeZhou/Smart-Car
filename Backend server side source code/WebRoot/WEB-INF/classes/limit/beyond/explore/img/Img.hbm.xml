@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<!-- 我们正在这里做了映射，我们还要将映射写到Spring 的配置中去 -->
+	
+	<class name="limit.beyond.explore.img.Img" table="tbl_img"  lazy="true"  dynamic-update="true">
+		<!-- 配置唯一标识 -->
+		<id name="id" column="id">
+			<generator class="native"/>
+		</id>
+		<!-- 配置普通属性 -->
+		<property name="path" column="path"/>
+		<property name="name" column="name"/>
+	
+		<!--  记录时间戳    设置字段：time timestamp CURRENT_TIMESTAMP  -->
+		<property name="time" type="timestamp">  
+            <column name="time" />  
+        </property>  
+	</class>
+</hibernate-mapping>
